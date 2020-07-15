@@ -2,13 +2,13 @@
 
 Use this script to export all your SEO data from Google Search Console including URLs, queries, clicks, impressions and rankings.
 
-The Google Search Console interface is limited to exports of 1000 rows, the sample Google API is limited to 25,000 rows - this script exports ALL data.
+The Google Search Console interface is limited to exports of 1000 rows, the sample Google Search Console API script is limited to 25,000 rows - this script exports ALL available data for the date range.
 
 ## Prerequisites
 
 - This script uses [Node.js](https://nodejs.org/en/)
 
-- You can only collect data from sites where you are a 'verified owner' [GSC permissions](https://developers.google.com/webmaster-tools/search-console-api-original/v3/prereqs)
+- You can only collect data from sites where you are a 'verified owner' see [GSC permissions](https://developers.google.com/webmaster-tools/search-console-api-original/v3/prereqs)
 
 ## Set Up
 
