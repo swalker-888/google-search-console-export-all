@@ -5,9 +5,9 @@ const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 
 const webmasters = google.webmasters("v3");
 
-const siteUrl = "https://www.evanscycles.com";
-const startDate = "2020-07-01";
-const endDate = "2020-07-15";
+const siteUrl = "https://www.example.com";
+const startDate = "2020-06-15";
+const endDate = "2020-06-30";
 
 async function collectAllGSCData(siteUrl, startDate, endDate) {
   //   Obtain user credentials to use for the request
@@ -77,4 +77,4 @@ async function collectAllGSCData(siteUrl, startDate, endDate) {
 if (module === require.main) {
   collectAllGSCData(siteUrl, startDate, endDate).catch(console.error);
 }
-module.exports = runSample;
+module.exports = collectAllGSCData;
