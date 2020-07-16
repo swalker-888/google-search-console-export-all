@@ -6,8 +6,8 @@ const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const webmasters = google.webmasters("v3");
 
 const siteUrl = "https://www.example.com";
-const startDate = "2020-06-15";
-const endDate = "2020-06-30";
+const startDate = "2020-04-01";
+const endDate = "2020-04-30";
 
 async function collectAllGSCData(siteUrl, startDate, endDate) {
   //   Obtain user credentials to use for the request
@@ -18,7 +18,15 @@ async function collectAllGSCData(siteUrl, startDate, endDate) {
       "https://www.googleapis.com/auth/webmasters.readonly",
     ],
   });
-  google.options({ auth });
+  google.options({
+    auth,
+    retryConfig: {
+      // The number of times to retry the request.  Defaults to 3.
+      "retry?": 10,
+      // When there is no response, the number of retries to attempt. Defaults to 2.
+      "noResponseRetries?": 10,
+    },
+  });
 
   const maxRows = 25000;
   let i = 0;
@@ -52,8 +60,8 @@ async function collectAllGSCData(siteUrl, startDate, endDate) {
     } else {
       rowCheck = false;
     }
-    console.log(`Google API Search Console Request #${i}`);
     i = i + 1;
+    console.log(`Google API Search Console Request #${i}`);
   } while (rowCheck);
 
   const csvWriter = createCsvWriter({
